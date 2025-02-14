@@ -64,9 +64,6 @@ export const remove = async (
 ) => {
   try {
     const employeeId = Number(request.params.id);
-
-    console.log('delete:', employeeId);
-    
     await employeeService.remove(employeeId);
     return noContent(reply);
   } catch (error) {

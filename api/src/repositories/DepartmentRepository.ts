@@ -5,4 +5,8 @@ export class DepartmentRepository implements IDepartmentRepository {
   async getById(id: number) {
     return prisma.department.findUnique({ where: { id } });
   }
+
+  async getAll() {
+    return prisma.department.findMany();
+  }
 }
