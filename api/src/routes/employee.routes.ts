@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { create } from "../controllers/EmployeeController";
+import { create, getAll } from "../controllers/EmployeeController";
 import { CreateEmployeeSchema } from "../models/Employee";
 
 export async function employeeRoutes(fastify: FastifyInstance) {
@@ -8,4 +8,6 @@ export async function employeeRoutes(fastify: FastifyInstance) {
     { schema: { body: CreateEmployeeSchema } },
     create
   );
+
+  fastify.get("/employees", getAll);
 }

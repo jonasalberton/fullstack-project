@@ -19,4 +19,8 @@ export class EmployeeService {
       throw error;
     }
   }
+
+  async getAll() {
+    return await this.employeeRepository.getAll();
+  }
 }

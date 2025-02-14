@@ -18,4 +18,8 @@ export class EmployeeRepository implements IEmployeeRepository {
       include: { department: true },
     });
   }
+
+  async getAll() {
+    return prisma.employee.findMany();
+  }
 }

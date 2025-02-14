@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { created } from "../utils/http/index";
+import { created, ok } from "../utils/http/index";
 import { CreateEmployeeDTO } from "../models/Employee";
 import { handleError } from "../utils/errors/handle-erros";
 import { EmployeeService } from "../services/EmployeeService";
@@ -18,6 +18,15 @@ export const create = async (
   try {
     const employee = await employeeService.create(request.body);
     return created(reply, employee);
+  } catch (error) {
+    handleError(reply, error);
+  }
+};
+
+export const getAll = async (_: FastifyRequest, reply: FastifyReply) => {
+  try {
+    const employees = await employeeService.getAll();
+    return ok(reply, employees);
   } catch (error) {
     handleError(reply, error);
   }
