@@ -23,4 +23,14 @@ export class EmployeeService {
   async getAll() {
     return await this.employeeRepository.getAll();
   }
+
+  async getById(employeeId: number) {
+    try {
+      const employee = await this.employeeRepository.getById(employeeId);
+      if (!employee) throw new NotFoundError(`Employee id ${employeeId} does not exist`);    
+      return employee;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

@@ -31,3 +31,16 @@ export const getAll = async (_: FastifyRequest, reply: FastifyReply) => {
     handleError(reply, error);
   }
 };
+
+export const getById = async (
+  request: FastifyRequest<{ Params: { id: number } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const employeeId = Number(request.params.id);    
+    const employees = await employeeService.getById(employeeId);
+    return ok(reply, employees);
+  } catch (error) {
+    handleError(reply, error);
+  }
+};
