@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { created, ok } from "../utils/http/index";
-import { CreateEmployeeDTO } from "../models/Employee";
+import { CreateEmployeeDTO, UpdateEmployeeDTO } from "../models/Employee";
 import { handleError } from "../utils/errors/handle-erros";
 import { EmployeeService } from "../services/EmployeeService";
 import { EmployeeRepository } from "../repositories/EmployeeRepository";
@@ -37,9 +37,24 @@ export const getById = async (
   reply: FastifyReply
 ) => {
   try {
-    const employeeId = Number(request.params.id);    
+    const employeeId = Number(request.params.id);
     const employees = await employeeService.getById(employeeId);
     return ok(reply, employees);
+  } catch (error) {
+    handleError(reply, error);
+  }
+};
+
+export const update = async (
+  request: FastifyRequest<{ Body: UpdateEmployeeDTO; Params: { id: number } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const id = Number(request.params.id);
+    console.log('IDDD: ', id);
+    
+    const employee = await employeeService.update(id, request.body);
+    return ok(reply, employee);
   } catch (error) {
     handleError(reply, error);
   }
