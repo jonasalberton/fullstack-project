@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { created, ok } from "../utils/http/index";
+import { created, noContent, ok } from "../utils/http/index";
 import { CreateEmployeeDTO, UpdateEmployeeDTO } from "../models/Employee";
 import { handleError } from "../utils/errors/handle-erros";
 import { EmployeeService } from "../services/EmployeeService";
@@ -51,10 +51,24 @@ export const update = async (
 ) => {
   try {
     const id = Number(request.params.id);
-    console.log('IDDD: ', id);
-    
     const employee = await employeeService.update(id, request.body);
     return ok(reply, employee);
+  } catch (error) {
+    handleError(reply, error);
+  }
+};
+
+export const remove = async (
+  request: FastifyRequest<{ Params: { id: number } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const employeeId = Number(request.params.id);
+
+    console.log('delete:', employeeId);
+    
+    await employeeService.remove(employeeId);
+    return noContent(reply);
   } catch (error) {
     handleError(reply, error);
   }

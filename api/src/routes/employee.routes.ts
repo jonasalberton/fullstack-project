@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { create, getAll, getById, update } from "../controllers/EmployeeController";
+import { create, getAll, getById, update, remove } from "../controllers/EmployeeController";
 import { CreateEmployeeSchema, UpdateEmployeeSchema } from "../models/Employee";
 
 export async function employeeRoutes(fastify: FastifyInstance) {
@@ -15,4 +15,5 @@ export async function employeeRoutes(fastify: FastifyInstance) {
     { schema: { body: UpdateEmployeeSchema } },
     update
   );
+  fastify.delete("/employees/:id", remove);
 }

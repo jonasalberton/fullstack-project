@@ -29,4 +29,10 @@ export class EmployeeRepository implements IEmployeeRepository {
       data: employee,
     });
   }
+
+  async remove(id: number) {
+    return prisma.employee.delete({
+      where: { id },
+    });
+  }
 }

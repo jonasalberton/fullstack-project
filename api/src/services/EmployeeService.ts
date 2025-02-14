@@ -2,6 +2,7 @@ import { CreateEmployeeDTO, UpdateEmployeeDTO } from "../models/Employee";
 import { IEmployeeRepository } from "../models/IEmployeeRepository";
 import { IDepartmentRepository } from "../models/IDepartmentRepository";
 import { NotFoundError } from "../utils/errors/not-found";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 export class EmployeeService {
   constructor(
@@ -45,6 +46,17 @@ export class EmployeeService {
      }
 
     return await this.employeeRepository.update(id, employee);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async remove(employeeId: number) {
+    try {
+      const employeeExists = await this.employeeRepository.getById(employeeId);
+      if (!employeeExists) throw new NotFoundError(`Employee id ${employeeId} does not exist`);
+      
+     return await this.employeeRepository.remove(employeeId);
     } catch (error) {
       throw error;
     }

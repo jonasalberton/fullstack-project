@@ -15,3 +15,7 @@ export const notFound = <T>(reply: FastifyReply, body: T): void => {
 export const ok = <T>(reply: FastifyReply, body: T): void => {
   reply.code(200).send(body);
 };
+
+export const noContent = (reply: FastifyReply): void => {
+  reply.code(204);
+};

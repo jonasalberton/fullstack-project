@@ -6,4 +6,5 @@ export interface IEmployeeRepository {
   getById(id: number): Promise<Employee | null>;
   getAll(): Promise<Employee[]>;
   update(id: number, data: UpdateEmployeeDTO): Promise<Employee>;
+  remove(id: number): Promise<Employee>;
 }
