@@ -4,6 +4,7 @@ import EmployeeList from "@/components/employee/employee-list";
 import { useQuery } from "@tanstack/react-query";
 import { FullEmployee } from "@/models/Employee";
 import { getAllEmployees } from "@/services/employee-service";
+import NewEmployeeModal from "@/components/employee/create-employee-modal";
 
 export function Employees() {
   const { data, error, isLoading } = useQuery<FullEmployee[]>({
@@ -16,7 +17,10 @@ export function Employees() {
 
   return (
     <div>
-      <h1 className="font-semibold mb-4">Employees</h1>
+      <div className="flex text-center justify-between mb-4">
+        <h1 className="font-semibold mb-4">Employees</h1>
+        <NewEmployeeModal />
+      </div>
       <EmployeeList employees={data ?? []} />
     </div>
   );

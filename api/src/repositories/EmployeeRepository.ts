@@ -24,6 +24,9 @@ export class EmployeeRepository implements IEmployeeRepository {
       include: {
         department: true,
       },
+      orderBy: {
+        updatedAt: "desc"
+      }
     });
   }
 
