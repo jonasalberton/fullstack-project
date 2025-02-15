@@ -1,21 +1,23 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "./App";
+import { Employees } from "./pages/employees/employees";
+import { ROUTES } from "./routes";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: ROUTES.HOME,
     element: <App />,
     children: [
       {
-        path: "/",
-        element: <Navigate replace to={"/employees"} />,
+        path: ROUTES.HOME,
+        element: <Navigate replace to={ROUTES.EMPLOYEES} />,
       },
       {
-        path: "/employees",
-        element: "hi employees",
+        path: ROUTES.EMPLOYEES,
+        element: <Employees />,
       },
       {
-        path: "/employees/:id",
+        path: ROUTES.EMPLOYEE_DETAILS,
         element: "hi employees details",
       },
     ],

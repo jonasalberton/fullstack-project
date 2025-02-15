@@ -7,3 +7,5 @@ This projest uses:
 - Tailwindcss
 - Shadcn
 - React Router Dom
+- Tanstack query
+- Axios

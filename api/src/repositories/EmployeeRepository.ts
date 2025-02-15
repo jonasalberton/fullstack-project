@@ -20,7 +20,11 @@ export class EmployeeRepository implements IEmployeeRepository {
   }
 
   async getAll() {
-    return prisma.employee.findMany();
+    return prisma.employee.findMany({
+      include: {
+        department: true,
+      },
+    });
   }
 
   async update(id: number, employee: CreateEmployeeDTO) {

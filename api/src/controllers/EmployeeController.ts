@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { created, noContent, ok } from "../utils/http/index";
+import { created, ok } from "../utils/http/index";
 import { CreateEmployeeDTO, UpdateEmployeeDTO } from "../models/Employee";
 import { handleError } from "../utils/errors/handle-erros";
 import { EmployeeService } from "../services/EmployeeService";
@@ -65,7 +65,7 @@ export const remove = async (
   try {
     const employeeId = Number(request.params.id);
     await employeeService.remove(employeeId);
-    return noContent(reply);
+    return ok(reply, true);
   } catch (error) {
     handleError(reply, error);
   }
