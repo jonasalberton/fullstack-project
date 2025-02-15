@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "./App";
 import { Employees } from "./pages/employees/employees";
 import { ROUTES } from "./routes";
+import { EmployeeDetails } from "./pages/employee-details/employee-details";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTES.EMPLOYEE_DETAILS,
-        element: "hi employees details",
+        element: <EmployeeDetails />,
       },
     ],
   },

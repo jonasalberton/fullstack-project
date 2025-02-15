@@ -12,8 +12,8 @@ export function Employees() {
     queryFn: getAllEmployees,
   });
 
-  if (error) return <Error />;
   if (isLoading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <div>

@@ -16,6 +16,7 @@ model Employee {
   departmentId Int
   phone      String?   
   address    String?
+  isActive  Boolean  @default(true)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }

@@ -34,6 +34,9 @@ export class EmployeeRepository implements IEmployeeRepository {
     return prisma.employee.update({
       where: { id },
       data: employee,
+      include: {
+        department: true
+      }
     });
   }
 

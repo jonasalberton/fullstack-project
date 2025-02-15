@@ -25,6 +25,7 @@ const UpdateEmployeeSchema = z.object({
     .transform((dateString) => new Date(dateString))
     .optional(),
   phone: z.string().optional(),
+  isActive: z.boolean().optional(),
   address: z.string().optional(),
 });
 

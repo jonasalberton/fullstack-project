@@ -6,10 +6,14 @@ export type Employee = {
   lastName: string;
   hireDate: Date;
   departmentId: number;
+  isActive: boolean;
   phone?: string;
   address?: string;
 };
 
 export type FullEmployee = Employee & { department: Department };
 
-export type CreateEmployeeDTO = Omit<Employee, "id">;
+export type CreateEmployeeDTO = Pick<
+  Employee,
+  "firstName" | "lastName" | "address" | "departmentId" | "hireDate" | "phone"
+>;
