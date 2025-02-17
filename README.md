@@ -15,7 +15,7 @@ After setting up the database, you need to run the db migration to create the in
 npx prisma migrate dev
 ```
 
-### API Setup and Running
+### API Setup and Run
 
 To set up the API, navigate to the `api` folder and run the following command to install all dependencies:
 ```console
@@ -26,3 +26,15 @@ Once the dependencies are installed, you can start the API project locally using
 ```console
 npm run dev
 ```
+
+### Front-end Setup and Run
+To set up the Front-end, navigate to the `front-end` folder and run the following command to install all dependencies:
+```console
+npm install
+```
+
+Once the dependencies are installed, you can start the front-end project locally using the following command:
+```console
+npm run dev
+````
+
