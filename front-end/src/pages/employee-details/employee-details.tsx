@@ -11,7 +11,7 @@ import { ArrowLeft } from "lucide-react";
 import { ROUTES } from "@/routes";
 import EmployeeHistory from "@/components/employee/employee-history";
 
-export function EmployeeDetails() {
+export default function EmployeeDetails() {
   const { id } = useParams<{ id: string }>();
   const { data, error, isLoading } = useQuery<FullEmployee>({
     queryKey: ["employee", Number(id)],

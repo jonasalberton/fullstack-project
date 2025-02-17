@@ -7,7 +7,7 @@ type EmployeePortalContextType = {
   departments: Department[];
 };
 
-const EmployeePortalContext = createContext<EmployeePortalContextType>({
+export const EmployeePortalContext = createContext<EmployeePortalContextType>({
   departments: [],
 });
 

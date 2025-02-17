@@ -53,6 +53,7 @@ export default function EmployeeCard({ employee }: Props) {
         <Button>View Details</Button>
       </Link>
       <Button
+        data-testid="remove-user"
         variant={"ghost"}
         onClick={() => mutate(employee.id)}
         disabled={isPending}

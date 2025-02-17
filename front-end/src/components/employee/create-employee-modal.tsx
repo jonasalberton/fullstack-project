@@ -75,6 +75,9 @@ function NewEmployeeModal() {
   };
 
   const onSubmit = async (data: FormData) => {
+
+    console.log('HEREEEE');
+    
     mutate({
       phone: data.phone,
       address: data.address,
@@ -100,7 +103,7 @@ function NewEmployeeModal() {
             Please complete the form to register a new employee
           </DialogDescription>
         </DialogHeader>
-        <form className="grid gap-4 py-4" onSubmit={handleSubmit(onSubmit)}>
+        <form role="form" className="grid gap-4 py-4" onSubmit={handleSubmit(onSubmit)}>
           <InputFormField
             label="First Name"
             name="firstname"
@@ -127,6 +130,7 @@ function NewEmployeeModal() {
             <Controller
               name="department"
               control={control}
+              data-testid="department"
               render={({ field }) => (
                 <Select
                   onValueChange={(value) => field.onChange(JSON.parse(value))}

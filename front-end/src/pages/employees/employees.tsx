@@ -6,7 +6,7 @@ import { FullEmployee } from "@/models/Employee";
 import { getAllEmployees } from "@/services/employee-service";
 import NewEmployeeModal from "@/components/employee/create-employee-modal";
 
-export function Employees() {
+export default function Employees() {
   const { data, error, isLoading } = useQuery<FullEmployee[]>({
     queryKey: ["employees"],
     queryFn: getAllEmployees,

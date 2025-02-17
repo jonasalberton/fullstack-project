@@ -1,8 +1,13 @@
+import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "./App";
-import { Employees } from "./pages/employees/employees";
+
+const Employees = React.lazy(() => import("./pages/employees/employees"));
 import { ROUTES } from "./routes";
-import { EmployeeDetails } from "./pages/employee-details/employee-details";
+
+const EmployeeDetails = React.lazy(
+  () => import("./pages/employee-details/employee-details")
+);
 
 const router = createBrowserRouter([
   {

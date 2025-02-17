@@ -10,18 +10,19 @@ import {
   TableRow,
 } from "../ui/table";
 import { memo, useEffect } from "react";
+import { format } from "date-fns";
 
 type Props = {
   employeeId: number;
   departmentId: number;
 };
 
+// TODO: change strategy to load only necessary by using a cursors or date filter
 function EmployeeHistory({ employeeId, departmentId }: Props) {
   const { data, error, isLoading, refetch } = useQuery({
     queryKey: ["history", employeeId],
     queryFn: () => getEmployeeHistory(employeeId),
   });
-
 
   useEffect(() => {
     refetch();
@@ -48,9 +49,7 @@ function EmployeeHistory({ employeeId, departmentId }: Props) {
         <TableBody>
           {data.map((item) => (
             <TableRow key={item.id}>
-              <TableCell>
-                {new Date(item.createdAt).toLocaleDateString()}
-              </TableCell>
+              <TableCell>{format(new Date(item.createdAt), "P")}</TableCell>
               <TableCell>{item.department.name}</TableCell>
             </TableRow>
           ))}

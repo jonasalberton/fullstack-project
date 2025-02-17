@@ -7,9 +7,9 @@ import {
   format,
 } from "date-fns";
 
-export function formatRelativeDifference(fromDate: string | Date): string {
+export function formatRelativeDifference(fromDate: string | Date, compareDate?: Date): string {
   const startDate = new Date(fromDate);
-  const now = new Date();
+  const now = compareDate ?? new Date();
 
   const years = differenceInYears(now, startDate);
   const afterYears = addYears(startDate, years);

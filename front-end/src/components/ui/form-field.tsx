@@ -18,7 +18,7 @@ export default function InputFormField({
       <Label htmlFor={name} className="text-right">
         {label}
       </Label>
-      <Input {...registerInput} className="col-span-3" />
+      <Input {...registerInput} data-testid={name}  className="col-span-3" />
       {error && (
         <span className="text-red-500 text-xs text-right mt-[-10] col-span-4">
           {error}
