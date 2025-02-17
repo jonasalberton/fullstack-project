@@ -39,3 +39,13 @@ export {
   UpdateEmployeeDTO,
   UpdateEmployeeSchema,
 };
+
+export type EmployeeHistoryDTO = {
+  id: number;
+  createdAt: Date;
+  employeeId: number;
+  department: {
+    id: number;
+    name: string;
+  };
+};

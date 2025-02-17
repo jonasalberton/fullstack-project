@@ -16,7 +16,8 @@ model Employee {
   departmentId Int
   phone      String?   
   address    String?
-  isActive  Boolean  @default(true)
+  history    EmployeeHistory[]
+  isActive   Boolean  @default(true)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }
@@ -25,6 +26,18 @@ model Department {
   id        Int     @id @default(autoincrement())
   name      String     @unique
   employees Employee[]
+  history    EmployeeHistory[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
+}
+
+model EmployeeHistory { 
+  id           Int  @id @default(autoincrement())
+  createdAt    DateTime  @default(now())
+  employeeId   Int
+  departmentId Int
+  employee     Employee @relation(fields: [employeeId], references: [id])
+  department   Department @relation(fields: [departmentId], references: [id])
+
+  @@index([employeeId])
 }

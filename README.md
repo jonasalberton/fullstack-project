@@ -15,12 +15,6 @@ After setting up the database, you need to run the db migration to create the in
 npx prisma migrate dev
 ```
 
-Now that your database is up and running, you can seed it with some initial data by running the following command:
-
-```console
-npm run seed
-```
-
 ### API Setup and Running
 
 To set up the API, navigate to the `api` folder and run the following command to install all dependencies:

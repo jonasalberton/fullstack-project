@@ -1,13 +1,14 @@
-import { CreateEmployeeDTO, UpdateEmployeeDTO } from "../models/Employee";
+import { CreateEmployeeDTO, EmployeeHistoryDTO, UpdateEmployeeDTO } from "../models/Employee";
 import { IEmployeeRepository } from "../models/IEmployeeRepository";
 import { IDepartmentRepository } from "../models/IDepartmentRepository";
 import { NotFoundError } from "../utils/errors/not-found";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import { IEmployeeHistoryRepository } from "../models/IEmployeeHistoryRepository";
 
 export class EmployeeService {
   constructor(
     private employeeRepository: IEmployeeRepository,
-    private departmentRepository: IDepartmentRepository
+    private departmentRepository: IDepartmentRepository,
+    private employeeHistoryRepository: IEmployeeHistoryRepository
   ) {}
 
   async create(employee: CreateEmployeeDTO) {
@@ -57,6 +58,18 @@ export class EmployeeService {
       if (!employeeExists) throw new NotFoundError(`Employee id ${employeeId} does not exist`);
       
      return await this.employeeRepository.remove(employeeId);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getHistory(employeeId: number): Promise<EmployeeHistoryDTO[]> {
+    try {
+      const employee = await this.employeeRepository.getById(employeeId);
+      if (!employee) throw new NotFoundError(`Employee id ${employeeId} does not exist`);    
+      
+      const history = await this.employeeHistoryRepository.getAll(employeeId);
+      return history ?? [];
     } catch (error) {
       throw error;
     }

@@ -17,3 +17,10 @@ export type CreateEmployeeDTO = Pick<
   Employee,
   "firstName" | "lastName" | "address" | "departmentId" | "hireDate" | "phone"
 >;
+
+export type EmployeeHistoryDTO = {
+  id: number;
+  createdAt: Date;
+  employeeId: number;
+  department: Department;
+};

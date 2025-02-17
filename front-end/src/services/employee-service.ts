@@ -1,4 +1,4 @@
-import { CreateEmployeeDTO, Employee, FullEmployee } from "@/models/Employee";
+import { CreateEmployeeDTO, Employee, EmployeeHistoryDTO, FullEmployee } from "@/models/Employee";
 import { axios } from "./config/axios";
 
 export function getAllEmployees(): Promise<FullEmployee[]> {
@@ -18,5 +18,9 @@ export function getEmployeeById(id: number): Promise<FullEmployee> {
 }
 
 export function updateEmployee(id: number, employee: Partial<Employee>): Promise<FullEmployee> {
-  return axios.put(`/employees/${id}`, employee);
+  return axios.patch(`/employees/${id}`, employee);
+}
+
+export function getEmployeeHistory(id: number): Promise<EmployeeHistoryDTO[]> {
+  return axios.get(`/employees/${id}/history`);
 }

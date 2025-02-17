@@ -9,6 +9,7 @@ import EmployeeDetailsForm from "@/components/employee/employee-details-form";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { ROUTES } from "@/routes";
+import EmployeeHistory from "@/components/employee/employee-history";
 
 export function EmployeeDetails() {
   const { id } = useParams<{ id: string }>();
@@ -34,6 +35,7 @@ export function EmployeeDetails() {
         </Link>
       </div>
       <EmployeeDetailsForm employee={data} />
+      <EmployeeHistory employeeId={data.id} departmentId={data.departmentId} />
     </div>
   );
 }

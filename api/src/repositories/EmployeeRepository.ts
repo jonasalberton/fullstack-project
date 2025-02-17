@@ -25,18 +25,27 @@ export class EmployeeRepository implements IEmployeeRepository {
         department: true,
       },
       orderBy: {
-        updatedAt: "desc"
-      }
+        updatedAt: "desc",
+      },
     });
   }
 
   async update(id: number, employee: CreateEmployeeDTO) {
     return prisma.employee.update({
       where: { id },
-      data: employee,
+      data: {
+        ...employee,
+        history: employee.departmentId
+          ? {
+              create: {
+                departmentId: employee.departmentId,
+              },
+            }
+          : undefined,
+      },
       include: {
-        department: true
-      }
+        department: true,
+      },
     });
   }
 

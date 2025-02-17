@@ -5,10 +5,12 @@ import { handleError } from "../utils/errors/handle-erros";
 import { EmployeeService } from "../services/EmployeeService";
 import { EmployeeRepository } from "../repositories/EmployeeRepository";
 import { DepartmentRepository } from "../repositories/DepartmentRepository";
+import { EmployeeHistoryRepository } from "../repositories/EmployeeHistoryRepository";
 
 const employeeService = new EmployeeService(
   new EmployeeRepository(),
-  new DepartmentRepository()
+  new DepartmentRepository(),
+  new EmployeeHistoryRepository()
 );
 
 export const create = async (
@@ -66,6 +68,19 @@ export const remove = async (
     const employeeId = Number(request.params.id);
     await employeeService.remove(employeeId);
     return ok(reply, true);
+  } catch (error) {
+    handleError(reply, error);
+  }
+};
+
+export const getHistory = async (
+  request: FastifyRequest<{ Params: { id: number } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const employeeId = Number(request.params.id);
+    const history = await employeeService.getHistory(employeeId);
+    return ok(reply, history);
   } catch (error) {
     handleError(reply, error);
   }
