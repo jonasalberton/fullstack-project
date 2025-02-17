@@ -18,7 +18,7 @@ Back-end Technologies:
 * Fastify for creating an HTTPS server and utilizing Fastly logger
 * ZOD for schema validation at the routes layer
 * Prisma for database migrations and iterations
-* Unit tests at the Service layer for critical business logic
+* Vitest for unit tests at the Service layer for critical business logic
 * Postgresql as main Databse
 * Docker Compose for running the database image with a volume for data persistence
 
