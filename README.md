@@ -1,8 +1,7 @@
 # fullstack-assessment
 
 Project Overview:
-
-This project is a Single-Page Application (SPA) built using React and TypeScript, accompanied by an API constructed with Fastify and Prisma, adhering to the Controller-Service-Repository (CSR) architecture.
+This project is a cutting-edge Single-Page Application (SPA) crafted with React and TypeScript, complemented by a API built using Fastify and Prisma, structured around the Controller-Service-Repository (CSR) architectural pattern.
 
 Front-end Technologies:
 
