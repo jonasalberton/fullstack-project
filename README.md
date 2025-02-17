@@ -1,5 +1,29 @@
 # fullstack-assessment
 
+Project Overview:
+
+This project is a Single-Page Application (SPA) built using React and TypeScript, accompanied by an API constructed with Fastify and Prisma, adhering to the Controller-Service-Repository (CSR) architecture.
+
+Front-end Technologies:
+
+* React Router DOM for route management and code splitting to reduce bundle size
+* User Context API for managing global state, such as departments
+* React Hook Form for form control, paired with Zod for validation
+* Shadcn for front-end component management
+* Tanstack Query for efficient HTTP request management
+* Vitest for unit testing
+
+Back-end Technologies:
+
+* Fastify for creating an HTTPS server and utilizing Fastly logger
+* ZOD for schema validation at the routes layer
+* Prisma for database migrations and iterations
+* Unit tests at the Service layer for critical business logic
+* Postgresql as main Databse
+* Docker Compose for running the database image with a volume for data persistence
+*
+
+
 ![DB ERD](./api//ERD.png)
 
 ### Getting started

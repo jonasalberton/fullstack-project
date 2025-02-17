@@ -6,7 +6,9 @@
     "dev": "npx tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "seed": "npx prisma db seed"
+    "seed": "npx prisma db seed",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@types/node": "^22.13.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
   }
 }
