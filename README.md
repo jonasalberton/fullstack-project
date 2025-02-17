@@ -1,4 +1,5 @@
 # fullstack-assessment
+![2025-02-17 19 05 19](https://github.com/user-attachments/assets/c88802a2-81d7-4738-a639-cadb02372c83)
 
 Project Overview:
 This project is a cutting-edge Single-Page Application (SPA) crafted with React and TypeScript, complemented by a API built using Fastify and Prisma, structured around the Controller-Service-Repository (CSR) architectural pattern.
