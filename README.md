@@ -21,8 +21,15 @@ Back-end Technologies:
 * Unit tests at the Service layer for critical business logic
 * Postgresql as main Databse
 * Docker Compose for running the database image with a volume for data persistence
-*
 
+How I'd handle devops for this project
+
+GitHub Actions for CI/CD pipelines to test and deploys the app at AWS infrastructure, using AWS CDK for Infrastructure as Code (IAC).
+The front-end project would be hosted on CloudFront CDN, using S3 Bucket for static file storage.
+The database instance could be provisioned on RDS.
+The API deployed on ECS, with load balancing handled by ALB.
+
+Databse ERD
 
 ![DB ERD](./api//ERD.png)
 
